@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamiloota Beekamo - Lali Design</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- General Gallery Styles (Reusable) --- */
+        .product-gallery {
+            width: 100%;
+        }
+
+        .gallery__main-image-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .gallery__main-image {
+            width: 100%;
+            max-height: 500px; /* Increased for main product */
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .gallery__thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center; /* Center thumbnails */
+        }
+
+        .gallery__thumbnail {
+            width: 70px;
+            height: 70px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .gallery__thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery__thumbnail.active {
+            border-color: #007bff;
+        }
+
+        .gallery__arrow {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery__arrow:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .gallery__arrow--prev {
+            left: 15px;
+        }
+
+        .gallery__arrow--next {
+            right: 15px;
+        }
+
+        /* --- Styles for Product Cards in Grids --- */
+        .product-card .gallery__main-image {
+            max-height: 300px; /* Smaller height for cards */
+        }
+
+        .product-card .gallery__thumbnails {
+            margin-top: 10px;
+            gap: 5px;
+        }
+        
+        .product-card .gallery__thumbnail {
+            width: 50px;
+            height: 50px;
+        }
+
+        .product-card .gallery__arrow {
+            width: 30px;
+            height: 30px;
+            /* Hide arrows on smaller card galleries by default */
+            opacity: 0; 
+            visibility: hidden;
+        }
+
+        .product-card:hover .gallery__arrow {
+            /* Show arrows on hover */
+            opacity: 1;
+            visibility: visible;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Header from index.html -->
+    <header class="main-header">
+        <div class="header-container container">
+            <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="mega-menu-trigger"><a href="child.html" class="active">Shop <i class="fas fa-chevron-down fa-xs"></i></a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <a href="child.html">Childiren</a> > 
+                <span>UFFATA AADAA KAN DAA'IMANI</span>
+            </div>
+        </div>
+
+        <section class="product-detail">
+            <div class="container">
+                <!-- Main Product Gallery -->
+                <div class="product-gallery">
+                    <div class="gallery__main-image-wrapper">
+                        <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <img src="images/lal_child2.jpg" alt="Maamiloota Beekamo main view" class="gallery__main-image">
+                        <button class="gallery__arrow gallery__arrow--next" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="gallery__thumbnails">
+                        <!-- Each thumbnail now points to the large image via data-image-src -->
+                        <div class="gallery__thumbnail active" data-image-src="images/lal_child.jpg">
+                            <img src="images/lal_child.jpg" alt="Maamiloota Beekamo front view thumbnail">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/lal_child2.jpg">
+                            <img src="images/lal_child2.jpg" alt="Maamiloota Beekamo back view thumbnail">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/lal_child.jpg">
+                            <img src="images/lal_child2.jpg" alt="Maamiloota Beekamo detail view thumbnail">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/lal_child.jpg">
+                            <img src="images/lal_child2.jpg" alt="Maamiloota Beekamo model view thumbnail">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-info-main">
+                    <h1>Shewa Regal Gown</h1>
+                    <p class="product-price-main">5000 ETB</p>
+                    <p class="product-description">An elegant dress featuring classic Shewa patterns, perfect for celebrations and special occasions. Handwoven by artisans in the Shewa region using traditional techniques passed down through generations.</p>
+                    
+                    <form>
+                        <div class="option-group">
+                            <label for="size">Size</label>
+                            <div class="size-options">
+                                <input type="radio" name="size" id="size-s" value="s" checked>
+                                <label for="size-s">S</label>
+                                <input type="radio" name="size" id="size-m" value="m">
+                                <label for="size-m">M</label>
+                                <input type="radio" name="size" id="size-l" value="l">
+                                <label for="size-l">L</label>
+                                <input type="radio" name="size" id="size-xl" value="xl">
+                                <label for="size-xl">XL</label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="quantity">Quantity</label>
+                            <div class="quantity-selector">
+                                <button type="button" class="quantity-minus">-</button>
+                                <input type="number" id="quantity" value="1" min="1">
+                                <button type="button" class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-actions-main">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="button" class="btn btn-secondary">Add to Wishlist</button>
+                        </div>
+                    </form>
+
+                    <div class="product-details-accordion">
+                        <!-- Accordion items remain the same -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-products section-padding" style="background-color: var(--bg-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>You May Also Like</h2>
+                </div>
+                <div class="product-grid">
+
+                    <!-- Related Product Card 1: Reuses the gallery structure -->
+                    <div class="product-card">
+                        <div class="product-gallery">
+                            <div class="gallery__main-image-wrapper">
+                                <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                <img src="images/lal_child3.jpg" alt="Lenco Design front view" class="gallery__main-image">
+                                <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="gallery__thumbnails">
+                                <div class="gallery__thumbnail active" data-image-src="images/lal_child3.jpg">
+                                    <img src="images/lal_child3.jpg" alt="Lenco Design thumbnail 1">
+                                </div>
+                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 2">
+                                </div>
+                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Lenco Design</h3>
+                            <div class="product-price">10,000 ETB</div>
+                            <a href="famous.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Related Product Card 1: Reuses the gallery structure -->
+                    <div class="product-card">
+                        <div class="product-gallery">
+                            <div class="gallery__main-image-wrapper">
+                                <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                <img src="images/lal_child3.jpg" alt="Lenco Design front view" class="gallery__main-image">
+                                <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="gallery__thumbnails">
+                                <div class="gallery__thumbnail active" data-image-src="images/lal_child3.jpg">
+                                    <img src="images/lal_child3.jpg" alt="Lenco Design thumbnail 1">
+                                </div>
+                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 2">
+                                </div>
+                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Lenco Design</h3>
+                            <div class="product-price">10,000 ETB</div>
+                            <a href="famous.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <!-- Add more product cards here using the same consistent structure -->
+
+                                        <!-- Related Product Card 1: Reuses the gallery structure -->
+                                        <div class="product-card">
+                                            <div class="product-gallery">
+                                                <div class="gallery__main-image-wrapper">
+                                                    <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                                    <img src="images/lal_child3.jpg" alt="Lenco Design front view" class="gallery__main-image">
+                                                    <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                                                </div>
+                                                <div class="gallery__thumbnails">
+                                                    <div class="gallery__thumbnail active" data-image-src="images/lal_child3.jpg">
+                                                        <img src="images/lal_child3.jpg" alt="Lenco Design thumbnail 1">
+                                                    </div>
+                                                    <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                                        <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 2">
+                                                    </div>
+                                                    <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                                        <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3>Lenco Design</h3>
+                                                <div class="product-price">10,000 ETB</div>
+                                                <a href="famous.html" class="btn btn-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                                            <!-- Related Product Card 1: Reuses the gallery structure -->
+                                    <div class="product-card">
+                                        <div class="product-gallery">
+                                            <div class="gallery__main-image-wrapper">
+                                                <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                                <img src="images/lal_child3.jpg" alt="Lenco Design front view" class="gallery__main-image">
+                                                <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                                            </div>
+                                            <div class="gallery__thumbnails">
+                                                <div class="gallery__thumbnail active" data-image-src="images/lal_child3.jpg">
+                                                    <img src="images/lal_child3.jpg" alt="Lenco Design thumbnail 1">
+                                                </div>
+                                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 2">
+                                                </div>
+                                                <div class="gallery__thumbnail" data-image-src="images/lal_child4.jpg">
+                                                    <img src="images/lal_child4.jpg" alt="Lenco Design thumbnail 3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <h3>Lenco Design</h3>
+                                            <div class="product-price">10,000 ETB</div>
+                                            <a href="famous.html" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer from index.html -->
+    <footer class="main-footer">
+        <!-- ... footer content ... -->
+    </footer>
+    <nav class="mobile-bottom-nav">
+        <!-- ... mobile nav content ... -->
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- REUSABLE IMAGE GALLERY SCRIPT ---
+        // This single function will power ALL galleries on the page.
+        function initializeGallery(galleryElement) {
+            const mainImage = galleryElement.querySelector('.gallery__main-image');
+            const thumbnails = galleryElement.querySelectorAll('.gallery__thumbnail');
+            const prevBtn = galleryElement.querySelector('.gallery__arrow--prev');
+            const nextBtn = galleryElement.querySelector('.gallery__arrow--next');
+            
+            if (!mainImage || thumbnails.length === 0) {
+                // If a gallery is missing key parts, do nothing.
+                return;
+            }
+
+            let currentIndex = 0;
+
+            function updateGallery(index) {
+                // Get the new image source from the thumbnail's data attribute
+                const newSrc = thumbnails[index].dataset.imageSrc;
+                if (!newSrc) return;
+
+                // Update the main image
+                mainImage.style.opacity = '0';
+                setTimeout(() => {
+                    mainImage.src = newSrc;
+                    mainImage.alt = thumbnails[index].querySelector('img').alt.replace('thumbnail', 'view'); // Update alt text
+                    mainImage.style.opacity = '1';
+                }, 150); // Short delay for fade effect
+                
+                // Update the active state on thumbnails
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnails[index].classList.add('active');
+
+                // Update the current index
+                currentIndex = index;
+            }
+
+            // Event listener for clicking on a thumbnail
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    updateGallery(index);
+                });
+            });
+
+            // Event listeners for arrow navigation (if arrows exist)
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let newIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+                    updateGallery(newIndex);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    let newIndex = (currentIndex + 1) % thumbnails.length;
+                    updateGallery(newIndex);
+                });
+            }
+        }
+
+        // Find all gallery containers on the page and initialize them
+        const allGalleries = document.querySelectorAll('.product-gallery');
+        allGalleries.forEach(gallery => {
+            initializeGallery(gallery);
+        });
+
+
+        // --- OTHER PAGE SCRIPTS (like accordion, quantity, etc.) ---
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header button').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionItem = button.closest('.accordion-item');
+                accordionItem.classList.toggle('active');
+            });
+        });
+
+        // Quantity selector functionality
+        document.querySelectorAll('.quantity-selector').forEach(selector => {
+            const minusBtn = selector.querySelector('.quantity-minus');
+            const plusBtn = selector.querySelector('.quantity-plus');
+            const input = selector.querySelector('input[type="number"]');
+
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(input.value);
+                if (currentValue > 1) {
+                    input.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(input.value);
+                input.value = currentValue + 1;
+            });
+        });
+
+    });
+    </script>
+</body>
+</html>

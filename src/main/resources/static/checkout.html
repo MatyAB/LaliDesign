@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as index.html -->
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>Checkout - Lali Design</title>
+</head>
+<body>
+    <!-- Same header as index.html -->
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> &gt; 
+                <a href="cart.html">Cart</a> &gt; 
+                <span>Checkout</span>
+            </div>
+        </div>
+
+        <section class="checkout">
+            <div class="container">
+                <h1>Checkout</h1>
+                
+                <div class="checkout-container">
+                    <div class="checkout-steps">
+                        <div class="step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-title">Shipping</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-title">Payment</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-title">Review</span>
+                        </div>
+                    </div>
+
+                    <form class="checkout-form">
+                        <div class="checkout-section shipping-section active" data-section="1">
+                            <h2>Shipping Information</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="Ethiopia" selected>Ethiopia</option>
+                                    <option value="USA">United States</option>
+                                    <!-- More countries... -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group shipping-method">
+                                <h3>Shipping Method</h3>
+                                <div class="radio-group">
+                                    <input type="radio" id="standard-shipping" name="shipping" value="standard" checked>
+                                    <label for="standard-shipping">
+                                        <span class="method-name">Standard Shipping</span>
+                                        <span class="method-details">3-5 business days</span>
+                                        <span class="method-price">Free</span>
+                                    </label>
+                                </div>
+                                <div class="radio-group">
+                                    <input type="radio" id="express-shipping" name="shipping" value="express">
+                                    <label for="express-shipping">
+                                        <span class="method-name">Express Shipping</span>
+                                        <span class="method-details">1-2 business days</span>
+                                        <span class="method-price">$15.00</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-text back-to-cart">
+                                    <i class="fas fa-arrow-left"></i> Back to Cart
+                                </button>
+                                <button type="button" class="btn btn-primary next-step" data-next="2">
+                                    Continue to Payment
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="checkout-section payment-section" data-section="2">
+                            <h2>Payment Information</h2>
+                            <div class="payment-method-tabs">
+                                <button type="button" class="tab-btn active" data-tab="credit-card">Credit Card</button>
+                                <button type="button" class="tab-btn" data-tab="paypal">PayPal</button>
+                                <button type="button" class="tab-btn" data-tab="bank-transfer">Bank Transfer</button>
+                            </div>
+                            <div class="tab-content credit-card active" data-tab="credit-card">
+                                <div class="form-group">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-name">Name on Card</label>
+                                    <input type="text" id="card-name">
+                                </div>
+                            </div>
+                            <div class="tab-content paypal" data-tab="paypal">
+                                <p>You will be redirected to PayPal to complete your payment.</p>
+                                <button type="button" class="btn btn-paypal">
+                                    <i class="fab fa-paypal"></i> Pay with PayPal
+                                </button>
+                            </div>
+                            <div class="tab-content bank-transfer" data-tab="bank-transfer">
+                                <p>Bank transfer details will be provided after order confirmation.</p>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-text prev-step" data-prev="1">
+                                    <i class="fas fa-arrow-left"></i> Back to Shipping
+                                </button>
+                                <button type="button" class="btn btn-primary next-step" data-next="3">
+                                    Review Order
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="checkout-section review-section" data-section="3">
+                            <h2>Review Your Order</h2>
+                            <div class="review-summary">
+                                <div class="shipping-summary">
+                                    <h3>Shipping Information</h3>
+                                    <p>Natnael Tilahun<br>
+                                    123 Main Street<br>
+                                    Addis Ababa, Ethiopia<br>
+                                    +251 912 345 678<br>
+                                    natnael@example.com</p>
+                                    <p><strong>Shipping Method:</strong> Standard Shipping (Free)</p>
+                                </div>
+                                <div class="payment-summary">
+                                    <h3>Payment Method</h3>
+                                    <p><i class="fab fa-cc-visa"></i> Visa ending in 3456</p>
+                                </div>
+                            </div>
+                            <div class="order-summary">
+                                <h3>Order Summary</h3>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <div class="item-image">
+                                            <img src="images/product-1-thumb.jpg" alt="Shewa Regal Gown">
+                                        </div>
+                                        <div class="item-details">
+                                            <h4>Shewa Regal Gown</h4>
+                                            <p>Size: M, Color: Red</p>
+                                            <p>Qty: 1</p>
+                                        </div>
+                                        <div class="item-price">$180.00</div>
+                                    </div>
+                                </div>
+                                <div class="order-totals">
+                                    <div class="total-row">
+                                        <span>Subtotal</span>
+                                        <span>$180.00</span>
+                                    </div>
+                                    <div class="total-row">
+                                        <span>Shipping</span>
+                                        <span>Free</span>
+                                    </div>
+                                    <div class="total-row">
+                                        <span>Tax</span>
+                                        <span>$12.60</span>
+                                    </div>
+                                    <div class="total-row grand-total">
+                                        <span>Total</span>
+                                        <span>$192.60</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group terms">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-text prev-step" data-prev="2">
+                                    <i class="fas fa-arrow-left"></i> Back to Payment
+                                </button>
+                                <button type="submit" class="btn btn-primary place-order">
+                                    Place Order
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Same footer as index.html -->
+</body>
+</html>

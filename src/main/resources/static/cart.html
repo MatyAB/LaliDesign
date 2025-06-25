@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Lali Design</title>
+    <!-- Head content from index.html -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header from index.html -->
+    <header class="main-header">
+        <!-- ... header content ... -->
+    </header>
+    
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <span>Shopping Cart</span>
+            </div>
+        </div>
+
+        <section class="shopping-cart">
+            <div class="container">
+                <h1>Shopping Cart</h1>
+                <div class="cart-container">
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <div class="item-image">
+                                <img src="images/product-1-thumb.jpg" alt="Shewa Regal Gown" loading="lazy">
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-title">Shewa Regal Gown</h3>
+                                <p class="item-options">Size: M</p>
+                                <p class="item-price">$180.00</p>
+                                <div class="quantity-selector">
+                                    <button type="button" class="quantity-minus">-</button>
+                                    <input type="number" value="1" min="1">
+                                    <button type="button" class="quantity-plus">+</button>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="remove-item" title="Remove item"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- More cart items... -->
+                    </div>
+
+                    <aside class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span>Calculated at next step</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span>$180.00</span>
+                            </div>
+                        </div>
+                        <a href="checkout.html" class="btn btn-primary checkout-btn">Proceed to Checkout</a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer from index.html -->
+    <footer class="main-footer">
+        <!-- ... footer content ... -->
+    </footer>
+    <nav class="mobile-bottom-nav">
+        <!-- ... mobile nav content ... -->
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>
